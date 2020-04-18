@@ -24,8 +24,11 @@ func main() {
 		os.Exit(0)
 	}
 
-	matching := xkcdlib.SearchTranscript(os.Args[1])
-	fmt.Printf("Matches: %d\n", matching)
+	matches := xkcdlib.SearchTranscript(os.Args[1])
+	fmt.Printf("Matches: %d\n", len(matches))
+	for _, match := range matches {
+		fmt.Printf("%d: %s\n", match.Num, match.Title)
+	}
 }
 
 func showComic(num int) error {
