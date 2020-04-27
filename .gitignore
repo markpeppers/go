@@ -4,4 +4,6 @@ src/golang.org/
 src/gopl.io/
 src/honnef.co/
 src/test/
-
+.DS_Store
+.envrc
+.vscode
