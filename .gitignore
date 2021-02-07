@@ -1,7 +1,8 @@
 bin/
+pkg/
+go1.14/
 src/github.com/
 src/golang.org/
-src/gopl.io/
 src/honnef.co/
 src/test/
 .DS_Store
