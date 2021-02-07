@@ -1,3 +1,4 @@
+// gopl Ex 8.1
 package main
 
 import (
