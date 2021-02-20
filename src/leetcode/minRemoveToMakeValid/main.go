@@ -55,6 +55,43 @@ func minRemoveToMakeValid(s string) string {
 	return strings.Replace(s, "*", "", -1)
 }
 
+type stack []int
+
+func (s stack) hasElements() bool {
+	return len(s) > 0
+}
+
+func (s *stack) pop() int {
+	ret := (*s)[len(*s)-1]
+	*s = (*s)[:len(*s)-1]
+	return ret
+}
+
+func (s *stack) push(i int) {
+	*s = append(*s, i)
+}
+
+func minRemoveToMakeValid2(s string) string {
+	stk := stack{}
+	sb := []rune(s)
+	for i, c := range sb {
+		if c == '(' {
+			stk.push(i)
+		}
+		if c == ')' {
+			if stk.hasElements() {
+				_ = stk.pop()
+			} else {
+				sb[i] = '*'
+			}
+		}
+	}
+	for stk.hasElements() {
+		sb[stk.pop()] = '*'
+	}
+	return strings.ReplaceAll(string(sb), "*", "")
+}
+
 func main() {
 	strings := []string{
 		"lee(t(c)o)de)",
@@ -63,10 +100,11 @@ func main() {
 		"(a(b(c)d)",
 		"((())",
 		"))a()d(",
+		"",
 	}
 	for _, s := range strings {
 		fmt.Println(s)
-		fmt.Println(minRemoveToMakeValid(s))
+		fmt.Println(minRemoveToMakeValid2(s))
 		fmt.Println()
 	}
 }
