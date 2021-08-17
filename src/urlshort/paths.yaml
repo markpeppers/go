@@ -1,0 +1,5 @@
+- path: /wars
+  url: https://watson.brown.edu/costsofwar/costs/economic
+- path: /y
+  url: https://news.ycombinator.com/
+
